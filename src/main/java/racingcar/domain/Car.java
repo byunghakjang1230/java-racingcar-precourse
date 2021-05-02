@@ -1,22 +1,13 @@
 package racingcar.domain;
 
 public class Car {
-	public static final int CAR_NAME_LENGTH_MIN = 1;
-	public static final int CAR_NAME_LENGTH_MAX = 5;
-	private final String carName;
+	private final CarName carName;
 
 	public Car(String carName) {
-		validateNameLength(carName.trim());
-		this.carName = carName.trim();
+		this.carName = new CarName(carName);
 	}
 
 	public String getCarName() {
-		return this.carName;
-	}
-
-	private void validateNameLength(String carName) {
-		if (carName.length() < CAR_NAME_LENGTH_MIN || carName.length() > CAR_NAME_LENGTH_MAX) {
-			throw new IllegalArgumentException("자동차의 이름은 1~5자리만 가능합니다.");
-		}
+		return this.carName.getCarName();
 	}
 }
