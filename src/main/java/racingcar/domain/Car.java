@@ -3,11 +3,11 @@ package racingcar.domain;
 public class Car {
 	public static final int MOVABLE_MIN_NUMBER = 4;
 	private final CarName carName;
-	private int moveCount;
+	private final MoveCount moveCount;
 
 	public Car(String carName) {
 		this.carName = new CarName(carName);
-		this.moveCount = 0;
+		this.moveCount = new MoveCount();
 	}
 
 	public String getCarName() {
@@ -16,11 +16,11 @@ public class Car {
 
 	public void tryMove(int randomNo) {
 		if (randomNo >= MOVABLE_MIN_NUMBER) {
-			this.moveCount++;
+			this.moveCount.progress();
 		}
 	}
 
 	public int getMoveCount() {
-		return this.moveCount;
+		return this.moveCount.getMoveCount();
 	}
 }
