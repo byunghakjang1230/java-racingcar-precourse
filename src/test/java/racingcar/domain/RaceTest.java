@@ -8,26 +8,16 @@ import org.junit.jupiter.api.Test;
 public class RaceTest {
 
 	@Test
-	@DisplayName("이동_횟수_입력_테스트")
-	public void racing_count_set_test() {
-		Race race = new Race();
+	@DisplayName("자동차_리스트_생성_및_이동_횟수_입력_테스트")
+	public void create_race_test() {
 		assertThatIllegalArgumentException().isThrownBy(() -> {
-			race.setRacingCount(0);
-		});
-		race.setRacingCount(1);
+			Race race = new Race("abc,def,ghi", 0);
+		}).withMessageContaining("이동 횟수는 1 이상의 양의 정수만 가능합니다.");
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			Race race = new Race("abc,def,abc", 1);
+		}).withMessageContaining("자동차 이름은 중복될 수 없습니다.");
+		Race race = new Race("abc,def,ghi", 1);
+		assertThat(race.getCarCount()).isEqualTo(3);
 		assertThat(race.getRacingCount()).isEqualTo(1);
-	}
-
-	@Test
-	@DisplayName("자동차_리스트_생성")
-	public void create_cars_test() {
-		Race race1 = new Race();
-		race1.createCars("abc,def,ghi");
-		assertThat(race1.getCarCount()).isEqualTo(3);
-
-		Race race2 = new Race();
-		assertThatIllegalArgumentException().isThrownBy(() -> {
-			race2.createCars("abc,def,abc");
-		});
 	}
 }
