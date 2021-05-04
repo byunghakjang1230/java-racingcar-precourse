@@ -1,10 +1,12 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Race {
-	public static final String SPLIT_REGEX = ",";
+	private static final String SPLIT_REGEX = ",";
 	private final Cars cars;
 	private final RacingCount racingCount;
 
@@ -19,6 +21,15 @@ public class Race {
 
 	public int getRacingCount() {
 		return this.racingCount.getRacingCount();
+	}
+
+	public Cars moveCars() {
+		this.cars.moveCars();
+		return this.cars;
+	}
+
+	public List<String> getWinnerNameList() {
+		return this.cars.getWinnerNameList();
 	}
 
 	private Cars createCars(String carNames) {

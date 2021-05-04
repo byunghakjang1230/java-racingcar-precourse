@@ -13,6 +13,6 @@ public class MoveCountTest {
 		MoveCount moveCount = new MoveCount();
 		moveCount.progress();
 		moveCount.progress();
-		assertThat(moveCount.getMoveCount()).isEqualTo(2);
+		assertThat(moveCount.isEqual(2)).isTrue();
 	}
 }

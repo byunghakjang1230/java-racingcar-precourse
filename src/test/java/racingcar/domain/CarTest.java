@@ -12,9 +12,9 @@ public class CarTest {
 	public void car_move_test() {
 		Car car = new Car("abc");
 		car.tryMove(4);
-		assertThat(car.getMoveCount()).isEqualTo(1);
+		assertThat(car.isEqualMoveCount(1)).isTrue();
 		car.tryMove(3);
-		assertThat(car.getMoveCount()).isEqualTo(1);
+		assertThat(car.isEqualMoveCount(2)).isFalse();
 	}
 
 	@Test

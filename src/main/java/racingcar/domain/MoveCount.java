@@ -14,4 +14,8 @@ public class MoveCount {
 	public int getMoveCount() {
 		return this.moveCount;
 	}
+
+	public boolean isEqual(int moveCount) {
+		return this.moveCount == moveCount;
+	}
 }

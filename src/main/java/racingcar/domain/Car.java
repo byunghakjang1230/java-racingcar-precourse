@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class Car {
-	public static final int MOVABLE_MIN_NUMBER = 4;
+	private static final int MOVABLE_MIN_NUMBER = 4;
 	private final CarName carName;
 	private final MoveCount moveCount;
 
@@ -22,5 +22,9 @@ public class Car {
 
 	public int getMoveCount() {
 		return this.moveCount.getMoveCount();
+	}
+
+	public boolean isEqualMoveCount(int moveCount) {
+		return this.moveCount.isEqual(moveCount);
 	}
 }
