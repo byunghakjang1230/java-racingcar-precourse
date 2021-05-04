@@ -1,17 +1,22 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Race {
 	private static final String SPLIT_REGEX = ",";
-	private final Cars cars;
-	private final RacingCount racingCount;
+	private Cars cars;
+	private RacingCount racingCount;
 
-	public Race(String carNames, int racingCount) {
-		this.cars = createCars(carNames);
+	public void createCars(String carNames) {
+		List<Car> tempCarList = new ArrayList<>();
+		for (String carName : carNames.split(SPLIT_REGEX)) {
+			tempCarList.add(new Car(carName));
+		}
+		this.cars = new Cars(tempCarList);
+	}
+
+	public void setRacingCount(int racingCount) {
 		this.racingCount = new RacingCount(racingCount);
 	}
 
@@ -30,13 +35,5 @@ public class Race {
 
 	public List<String> getWinnerNameList() {
 		return this.cars.getWinnerNameList();
-	}
-
-	private Cars createCars(String carNames) {
-		List<Car> tempCarList = new ArrayList<>();
-		for (String carName : carNames.split(SPLIT_REGEX)) {
-			tempCarList.add(new Car(carName));
-		}
-		return new Cars(tempCarList);
 	}
 }

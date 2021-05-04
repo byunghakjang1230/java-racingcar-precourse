@@ -5,18 +5,19 @@ import racingcar.domain.Race;
 import racingcar.view.UIView;
 
 public class RacingController {
-
 	private final UIView view;
-	private Race race;
+	private final Race race;
 
 	public RacingController() {
 		this.view = new UIView();
+		this.race = new Race();
 	}
 
 	public void initRacing() {
 		String carNames = view.displayAndInputCarNames();
+		this.race.createCars(carNames);
 		int racingCount = view.displayAndInputRacingCount();
-		this.race = new Race(carNames, racingCount);
+		this.race.setRacingCount(racingCount);
 	}
 
 	public void startRacing() {

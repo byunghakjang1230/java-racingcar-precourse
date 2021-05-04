@@ -23,14 +23,6 @@ public class Cars {
 		return this.carList.size();
 	}
 
-	private void validateDuplicationCarName(List<Car> carList) {
-		Set<String> validSet = new HashSet<>();
-		carList.forEach(car -> validSet.add(car.getCarName()));
-		if (validSet.size() != carList.size()) {
-			throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-		}
-	}
-
 	public void moveCars() {
 		this.carList.forEach(car -> car.tryMove(RandomUtils.getRandomNumber()));
 	}
@@ -47,17 +39,10 @@ public class Cars {
 		return carsMap.get(carName);
 	}
 
-
 	public List<String> getWinnerNameList() {
 		List<String> winnerList = new ArrayList<>();
 		this.carList.forEach(car -> addWinnerCarName(winnerList, car));
 		return winnerList;
-	}
-
-	private void addWinnerCarName(List<String> winnerList, Car car) {
-		if (car.isEqualMoveCount(getMaxMoveCount())) {
-			winnerList.add(car.getCarName());
-		}
 	}
 
 	public int getMaxMoveCount() {
@@ -65,5 +50,19 @@ public class Cars {
 		this.carList.forEach(car -> countList.add(car.getMoveCount()));
 		countList.sort(Comparator.reverseOrder());
 		return countList.get(FIRST_ELEMENT_INDEX);
+	}
+
+	private void validateDuplicationCarName(List<Car> carList) {
+		Set<String> validSet = new HashSet<>();
+		carList.forEach(car -> validSet.add(car.getCarName()));
+		if (validSet.size() != carList.size()) {
+			throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+		}
+	}
+
+	private void addWinnerCarName(List<String> winnerList, Car car) {
+		if (car.isEqualMoveCount(getMaxMoveCount())) {
+			winnerList.add(car.getCarName());
+		}
 	}
 }

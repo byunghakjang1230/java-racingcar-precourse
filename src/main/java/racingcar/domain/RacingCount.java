@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class RacingCount {
-	public static final int MIN_RACING_COUNT = 1;
+	private static final int MIN_RACING_COUNT = 1;
 	private final int racingCount;
 
 	public RacingCount(int racingCount) {
