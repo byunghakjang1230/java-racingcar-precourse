@@ -1,10 +1,11 @@
 package racingcar.domain;
 
 public class MoveCount {
+	private static final int DEFAULT_MOVE_COUNT = 0;
 	private int moveCount;
 
 	public MoveCount() {
-		this.moveCount = 0;
+		this.moveCount = DEFAULT_MOVE_COUNT;
 	}
 
 	public void progress() {
